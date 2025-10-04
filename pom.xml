@@ -12,6 +12,9 @@
 		<apache.poi.ooxml.version>5.2.4</apache.poi.ooxml.version>
 		<commons.io.version>2.15.1</commons.io.version>
 		<extent.report.version>5.1.2</extent.report.version>
+		<cucumber.jvm.version>7.30.0</cucumber.jvm.version>
+		<cucumber.testng.version>7.30.0</cucumber.testng.version>
+		<cucumber.picocontainer.version>7.30.0</cucumber.picocontainer.version>
 		<maven.compiler.plugin.version>3.13.0</maven.compiler.plugin.version>
 		<maven.surefire.plugin.version>3.5.2</maven.surefire.plugin.version>
 	</properties>
@@ -46,6 +49,21 @@
 			<groupId>com.aventstack</groupId>
 			<artifactId>extentreports</artifactId>
 			<version>${extent.report.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>${cucumber.jvm.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-testng</artifactId>
+			<version>${cucumber.testng.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-picocontainer</artifactId>
+			<version>${cucumber.picocontainer.version}</version>
 		</dependency>
 	</dependencies>
 
