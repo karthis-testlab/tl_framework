@@ -8,6 +8,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import static com.tl.framework.general.utils.LoggerUtility.*;
 import com.tl.framework.selenium.api.constants.Browsers;
 import com.tl.framework.selenium.api.constants.Locators;
 import com.tl.framework.selenium.api.design.Browser;
@@ -15,31 +16,42 @@ import com.tl.framework.selenium.api.design.Element;
 
 
 public class SeleniumBase extends DriverManager implements Browser, Element {	
+	
+	private WaitConditions wait;
+	
+	public SeleniumBase() {
+		wait = new WaitConditions(getDriver());
+	}
 
 	@Override
 	public void click(WebElement ele) {		
 		ele.click();	
+		pass("Successfully clicked on the given "+ele+" webelement in the DOM.");
 	}
 
 	@Override
 	public void click(WebElement ele, String jsExpression) {
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
 		jsExecutor.executeScript(jsExpression, ele);
+		pass("Successfully clicked on the given "+ele+" webelement in the DOM.");
 	}
 
 	@Override
 	public void type(WebElement ele, String data) {
 		ele.sendKeys(data);
+		pass("Successfully typed "+data+" in the given "+ele+" webelement in the DOM.");
 	}
 
 	@Override
 	public void typeAndEnter(WebElement ele, String data) {
 		ele.sendKeys(data, Keys.ENTER);		
+		pass("Successfully typed "+data+" and entered in the given "+ele+" webelement in the DOM.");
 	}
 
 	@Override
 	public void dropdownSelectByValue(WebElement ele, String value) {		
-		new Select(ele).selectByValue(value);		
+		new Select(ele).selectByValue(value);
+		pass("Successfully selected "+value+" in the given "+ele+" dropdown webelement in the DOM.");
 	}
 
 	@Override
@@ -55,16 +67,19 @@ public class SeleniumBase extends DriverManager implements Browser, Element {
 	@Override
 	public void browserLaunch() {	
 		setDriver(Browsers.CHROME);
+		pass("Successfully Launched Chrome Browser.");
 	}
 
 	@Override
-	public void browserLaunch(Browsers bowserName) {		
-		setDriver(bowserName);		
+	public void browserLaunch(Browsers browserName) {		
+		setDriver(browserName);	
+		pass("Successfully Launched "+browserName.toString()+" Browser.");
 	}
 
 	@Override
 	public void loadUrl(String url) {
-		getDriver().get(url);		
+		getDriver().get(url);
+		pass("Successfully loaded the AUT "+url+" url in the launed Browser.");
 	}
 
 	@Override
@@ -123,6 +138,16 @@ public class SeleniumBase extends DriverManager implements Browser, Element {
 	@Override
 	public void quit() {
 		getDriver().quit();		
+	}
+
+	@Override
+	public void switchToFrame(WebElement ele) {
+		wait.waitUntilFrameVisibleAndThenSwitchIt(ele);		
+	}
+
+	@Override
+	public void switchToMainDocument() {
+		getDriver().switchTo().defaultContent();		
 	}
 
 }

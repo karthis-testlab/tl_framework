@@ -3,14 +3,13 @@ package com.tl.framework.hooks;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-import com.tl.framework.selenium.api.base.WaitConditions;
+import com.tl.framework.selenium.api.base.SeleniumBase;
 
-public class TestNGHooks extends WaitConditions {
+public class TestNGHooks extends SeleniumBase {
 	
 	@BeforeMethod
 	public void beforeMethod() {
-		browserLaunch();
-		setWait();
+		browserLaunch();		
 		loadUrl("https://www.saucedemo.com/");
 	}
 	

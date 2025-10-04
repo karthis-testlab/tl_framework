@@ -17,5 +17,9 @@ public interface Element {
 	public String getElementText(WebElement ele);
 
 	public String getAttributeValue(WebElement ele, String value);
+	
+	public void switchToFrame(WebElement ele);
+	
+	public void switchToMainDocument();
 
 }
