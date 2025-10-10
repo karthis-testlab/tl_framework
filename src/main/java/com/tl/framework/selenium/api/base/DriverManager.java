@@ -1,7 +1,11 @@
 package com.tl.framework.selenium.api.base;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -14,7 +18,12 @@ public class DriverManager {
 	public void setDriver(Browsers browserName) {
 		switch (browserName) {
 		case CHROME:
-			driver.set(new ChromeDriver());
+			ChromeOptions options = new ChromeOptions();
+			Map<String, Object> prefs = new HashMap<String, Object>();
+			prefs.put("profile.password_manager_leak_detection", false);
+			options.setExperimentalOption("prefs", prefs);
+			options.addArguments("--start-maximized");
+			driver.set(new ChromeDriver(options));
 			break;
 		case EDGE:
 			driver.set(new EdgeDriver());
