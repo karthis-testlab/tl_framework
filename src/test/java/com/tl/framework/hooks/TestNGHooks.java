@@ -10,7 +10,7 @@ public class TestNGHooks extends SeleniumBase {
 	
 	@BeforeMethod
 	public void beforeMethod() {
-		browserLaunch(Browsers.FIREFOX);		
+		browserLaunch(Browsers.CHROME);		
 		loadUrl("https://www.saucedemo.com/");
 	}
 	
