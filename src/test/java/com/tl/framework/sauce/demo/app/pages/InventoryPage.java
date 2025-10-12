@@ -13,5 +13,9 @@ public class InventoryPage extends TestNGHooks {
 		wait = new WaitConditions(getDriver());	
 		Assert.assertTrue(wait.waitUntilUrlContainsSpecifiedPath("/inventory"));
 	}	
+	
+	public InventoryPage addFirstProductToTheCart() {
+		return this;
+	}
 
 }
