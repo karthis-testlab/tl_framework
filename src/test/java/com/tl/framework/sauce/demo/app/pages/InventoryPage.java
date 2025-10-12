@@ -4,6 +4,7 @@ import org.testng.Assert;
 
 import com.tl.framework.hooks.TestNGHooks;
 import com.tl.framework.selenium.api.base.WaitConditions;
+import com.tl.framework.selenium.api.constants.Locators;
 
 public class InventoryPage extends TestNGHooks {
 	
@@ -15,6 +16,7 @@ public class InventoryPage extends TestNGHooks {
 	}	
 	
 	public InventoryPage addFirstProductToTheCart() {
+		click(wait.waitUntilElementClickable(locateElement(Locators.XPATH, "//button[.='Add to cart']")));
 		return this;
 	}
 
